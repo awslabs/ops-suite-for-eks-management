@@ -1,0 +1,20 @@
+.idea
+.DS_Store
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+.npmrc
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+.tmp
+dist
+src/orchestrator/lambdas/layer/setup.py
+src/orchestrator/lambdas/layer/setup.cfg
+srcrips/bin
+pyvenv.cfg
+
+cdk.context.json
+export_vars.sh
+proton-inputs.json

@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: EKS Cluster Management API
+  version: 1.0.0
+servers:
+  - url: https://eks.example.com
+paths:
+  /clusters/backup:
+    post:
+      summary: Generate backup for EKS clusters
+      operationId: BackupEKSClusters
+      description: |
+        Backup the EKS clusters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AccountId:
+                  type: string
+                  description: AWS Account ID.
+                Region:
+                  type: string
+                  description: AWS Region.
+                ClusterName:
+                  type: string
+                  description: EKS Cluster Name.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSMLambdaResponse"
+        "500":
+          description: Exception occurred while starting automation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSMErrorLambdaResponse"
+
+components:
+  schemas:
+    SSMLambdaResponse:
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: The path to the API operation.
+        httpMethod:
+          type: string
+          default: get
+          description: The method of the API operation.
+        httpStatusCode:
+          type: integer
+          default: 200
+          description: The path to the API operation.
+        responseBody:
+          type: object
+          properties:
+            json:
+              type: object
+              properties:
+                executionId:
+                  type: string
+                  description: ID of the SSM automation execution.
+
+    SSMErrorLambdaResponse:
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: The path to the API operation.
+        httpMethod:
+          type: string
+          default: get
+          description: The method of the API operation.
+        httpStatusCode:
+          type: integer
+          default: 500
+          description: The path to the API operation.
+        responseBody:
+          type: object
+          properties:
+            json:
+              type: object
+              properties:
+                exception:
+                  type: string
+                  description: Error message.
+
+    ClusterBackUpRequest:
+      type: object
+      required:
+        - AccountId
+        - Region
+        - ClusterName
+      properties:
+        AccountId:
+          type: string
+          description: AWS Account ID.
+        Region:
+          type: string
+          description: AWS Region.
+        ClusterName:
+          type: string
+          description: EKS Cluster Name.
+        BackupOptions:
+          type: object
+          properties:
+            BackupName:
+              type: string
+              description: Name of the velero backup to be created

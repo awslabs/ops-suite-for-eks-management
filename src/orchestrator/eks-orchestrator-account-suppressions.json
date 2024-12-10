@@ -1,0 +1,326 @@
+[
+  {
+    "path": "/eks-orchestrator-account/Baseline/CentralizedS3Bucket/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-S1",
+        "reason": "Suppressed: The S3 Bucket has server access logs disabled."
+      },
+      {
+        "id": "AwsSolutions-S10",
+        "reason": "Suppressed: The S3 Bucket or bucket policy does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Baseline/CentralizedS3Bucket/Policy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-S10",
+        "reason": "Suppressed: The S3 Bucket or bucket policy does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Baseline/S3EventsDLQueue/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-SQS4",
+        "reason": "Suppressed: The SQS queue does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Baseline/S3EventsQueue/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-SQS4",
+        "reason": "Suppressed: The SQS queue does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Baseline/SSMAdministrationRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed:  The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-L1",
+        "reason": "Suppressed: The non-container Lambda function is not configured to use the latest runtime version."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed:The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Summary/SummaryLambdaRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed:The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/ServiceRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Backup/BackupLambdaRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/ReportGenerator/GlueCrawlerRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/ReportGenerator/GlueCrawlerRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/ReportGenerator/AthenaWorkGroup",
+    "suppression": [
+      {
+        "id": "AwsSolutions-ATH1",
+        "reason": "Suppressed: The Athena workgroup does not encrypt query results."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/ApiLambdaRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission"
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission"
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/DeploymentStage.prod/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG1",
+        "reason": "Suppressed: The API does not have access logging enabled."
+      },
+      {
+        "id": "AwsSolutions-APIG6",
+        "reason": "Suppressed: The REST API Stage does not have CloudWatch logging enabled for all methods."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/ApiGatewayRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG2",
+        "reason": "Suppressed: The REST API does not have request validation enabled."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/tenants/onboard/PUT/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/tenants/onboard/PUT/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/GET/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/{execution_id}/GET/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/summary/POST/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/backup/POST/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/restore/POST/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/Upgrade/UpgradeLambdaRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission"
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/upgrade/PATCH/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission"
+      },
+      {
+        "id": "AwsSolutions-COG4",
+        "reason": "Suppressed: The API GW method does not use a Cognito user pool authorizer."
+      }
+    ]
+  },
+  {
+    "path": "/eks-orchestrator-account/RestApiGateway/RestApi/Default/clusters/upgrade/PATCH/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-APIG4",
+        "reason": "Suppressed: The API does not implement authorization."
+      }
+    ]
+  }
+]

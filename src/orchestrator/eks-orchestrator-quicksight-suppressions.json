@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/eks-quicksight/eks-quicksight-s3-permissions/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission"
+      }
+    ]
+  }
+]

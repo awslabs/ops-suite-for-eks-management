@@ -1,0 +1,2 @@
+[MESSAGES CONTROL]
+disable=relative-beyond-top-level,assignment-from-no-return,no-name-in-module,import-error

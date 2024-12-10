@@ -1,0 +1,48 @@
+stages: # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - release
+  - packaging
+
+variables:
+  CDK_CONTEXT_SYNTH_FILE: cdk.context-testing.json
+  PROTON_INPUTS_FILE: proton-inputs-testing
+include:
+  - project: zeta/domain-orchestration/gitlab-templates
+    file: zeta-common-pipelines.yml
+
+build:cdk-nag:
+  extends: npm:build
+  stage: build
+  image:
+    name: $NODE_PYTHON_BUILD_IMAGE
+    entrypoint: [""]
+  rules:
+    - exists:
+        - cdk.json
+        - cdk.context-testing.json
+        - proton-inputs-testing.json
+  before_script:
+    - npm i -g aws-cdk@2.128.0
+    - npm ci --cache .npm --prefer-offline
+    - if [ -f $PROTON_INPUTS_FILE ]; then cp $PROTON_INPUTS_FILE proton-inputs.json; fi;
+    - if [ -f $CDK_CONTEXT_SYNTH_FILE ]; then cp $CDK_CONTEXT_SYNTH_FILE cdk.context.json; fi;
+  script:
+    - CDK_DEPLOY_REGION=eu-central-1 CDK_DEPLOY_ACCOUNT=12345678 cdk synth --all --lookups false
+
+npm:test:
+  extends: npm:build
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  stage: test
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - if [ -f $PROTON_INPUTS_FILE ]; then cp $PROTON_INPUTS_FILE proton-inputs.json; fi;
+    - npm run build
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml

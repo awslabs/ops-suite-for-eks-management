@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: EKS Cluster Management API
+  version: 1.0.0
+servers:
+  - url: https://eks.example.com
+paths:
+  /clusters/update:
+    patch:
+      summary: Update EKS clusters version to the next minor version.
+      operationId: UpdateEKSClusters
+      description: |
+        Update the EKS cluster version, nodegroup versions, addon versions.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AccountId:
+                  type: string
+                  description: AWS Account ID.
+                Region:
+                  type: string
+                  description: AWS Region.
+                ClusterName:
+                  type: string
+                  description: EKS Cluster Name.
+                DesiredEKSVersion:
+                  type: string
+                  description: EKS Cluster Name.
+      responses:
+        "200":
+          description: Cluster updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSMLambdaResponse"
+        "500":
+          description: Exception occurred while starting automation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSMErrorLambdaResponse"
+
+components:
+  schemas:
+    SSMLambdaResponse:
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: The path to the API operation.
+        httpMethod:
+          type: string
+          default: get
+          description: The method of the API operation.
+        httpStatusCode:
+          type: integer
+          default: 200
+          description: The path to the API operation.
+        responseBody:
+          type: object
+          properties:
+            json:
+              type: object
+              properties:
+                executionId:
+                  type: string
+                  description: ID of the SSM automation execution.
+
+    SSMErrorLambdaResponse:
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: The path to the API operation.
+        httpMethod:
+          type: string
+          default: get
+          description: The method of the API operation.
+        httpStatusCode:
+          type: integer
+          default: 500
+          description: The path to the API operation.
+        responseBody:
+          type: object
+          properties:
+            json:
+              type: object
+              properties:
+                exception:
+                  type: string
+                  description: Error message.
+
+    ClusterUpdateRequest:
+      type: object
+      required:
+        - AccountId
+        - Region
+        - ClusterName
+        - DesiredEKSVersion
+      properties:
+        AccountId:
+          type: string
+          description: AWS Account ID.
+        Region:
+          type: string
+          description: AWS Region.
+        ClusterName:
+          type: string
+          description: EKS Cluster Name.
+        DesiredEKSVersion:
+          type: string
+          description: EKS Version to upgrade to. This should be the next minor version.

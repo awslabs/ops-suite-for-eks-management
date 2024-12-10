@@ -1,0 +1,3 @@
+ignore:
+  - vulnerability: GHSA-3xgq-45jj-v275
+    vex-justification: fix_not_available
