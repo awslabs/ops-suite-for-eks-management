@@ -1,0 +1,46 @@
+[
+  {
+    "path": "/eks-tenant-bastion-host/BastionHostConstruct/BastionHostRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-bastion-host/BastionHostConstruct/BastionHostRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-bastion-host/BastionHostConstruct/BastionHost/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-EC26",
+        "reason": "Suppressed: The resource creates one or more EBS volumes that have encryption disabled."
+      },
+      {
+        "id": "AwsSolutions-EC28",
+        "reason": "Suppressed: The EC2 instance/AutoScaling launch configuration does not have detailed monitoring enabled."
+      },
+      {
+        "id": "AwsSolutions-EC29",
+        "reason": "Suppressed: The EC2 instance is not part of an ASG and has Termination Protection disabled."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-bastion-host/BastionHostConstruct/BastionHostRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  }
+]

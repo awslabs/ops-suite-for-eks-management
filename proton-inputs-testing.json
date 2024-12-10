@@ -1,0 +1,75 @@
+{
+  "environment": {
+    "name": "eks",
+    "inputs": {
+      "eks-management": {},
+      "orchestratorAccountConfig": {
+        "enabled": true,
+        "summary": {
+          "enabled": true,
+          "maintenanceWindow": {
+            "enabled": true,
+            "schedule": "cron(0 0 * * ? *)"
+          }
+        },
+        "backup": {
+          "enabled": true,
+          "maintenanceWindow": {
+            "enabled": true,
+            "schedule": "cron(0 0 * * ? *)"
+          }
+        },
+        "upgrade": {
+          "enabled": true,
+          "maintenanceWindow": {
+            "enabled": true,
+            "schedule": "cron(0 0 * * ? *)"
+          }
+        },
+        "reportGenerator": {
+          "glueCrawlerSchedule": "cron(0 0 * * ? *)"
+        },
+        "restApi": {
+          "enabled": true
+        },
+        "quicksight": {
+          "enabled": false,
+          "quickSightUserArn": "arn:aws:quicksight:us-east-1:1234567890123:user/namespace/Admin/abcd",
+          "summary": {
+            "enabled": true
+          },
+          "backup": {
+            "enabled": true
+          },
+          "upgrade": {
+            "enabled": true
+          }
+        }
+      },
+      "tenantAccountConfig": {
+        "orchestratorAccountId": "12345678",
+        "enabled": true,
+        "tenants": [
+          {
+            "enabled": true,
+            "bastionHost": {
+              "enabled": true,
+              "vpcId": "vpc-0c15526b48be965cc",
+              "instanceType": "t2.micro"
+            },
+            "bastionHostRole": {
+              "enabled": true,
+              "clusterArns": ["*"],
+              "backup": {
+                "enabled": true
+              },
+              "upgrade": {
+                "enabled": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

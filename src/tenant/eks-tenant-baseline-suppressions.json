@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/eks-tenant-baseline/Baseline/BackupS3Bucket/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-S1",
+        "reason": "Suppressed: The S3 Bucket has server access logs disabled."
+      },
+      {
+        "id": "AwsSolutions-S10",
+        "reason": "Suppressed: The S3 Bucket or bucket policy does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-baseline/Baseline/BackupS3Bucket/Policy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-S10",
+        "reason": "Suppressed: The S3 Bucket or bucket policy does not require requests to use SSL."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-baseline/Baseline/SSMExecutionRole/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM4",
+        "reason": "Suppressed: The IAM user, role, or group uses AWS managed policies."
+      }
+    ]
+  },
+  {
+    "path": "/eks-tenant-baseline/Baseline/SSMExecutionRole/DefaultPolicy/Resource",
+    "suppression": [
+      {
+        "id": "AwsSolutions-IAM5",
+        "reason": "Suppressed: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission."
+      }
+    ]
+  }
+]

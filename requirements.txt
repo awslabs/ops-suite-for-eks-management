@@ -1,0 +1,6 @@
+kubernetes~=27.2.0
+prettytable~=3.8.0
+boto3
+flatten-json~=0.1.13
+pandas
+aws_lambda_powertools

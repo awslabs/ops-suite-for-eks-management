@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: EKS Cluster Management API
+  version: 1.0.0
+servers:
+  - url: https://eks.example.com
+paths:
+  /clusters:
+    get:
+      summary: List all EKS clusters
+      operationId: ListEKSClusters
+      description: |
+        Return a list of EKS clusters from the Athena table. The response can be filtered based on the query parameters.
+        `Information` is used to control the fields in the response.
+        This API returns the latest data using the `reportDate` field.
+      parameters:
+        - in: query
+          name: AccountId
+          description: AWS Account ID. List all the clusters of this account.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: Region
+          description: AWS Region. List all the clusters of this region. Can be used in conjunction with the accountId parameter for filtering.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: Information
+          description: Type of information to return. Defaulted to Metadata. Be case insensitive.
+          required: false
+          schema:
+            type: string
+            default: Metadata
+            enum:
+              [
+                "Metadata",
+                "DeprecatedAPIs",
+                "Addons",
+                "UnhealthyPods",
+                "SingletonResources",
+                "CertificateSigningRequests",
+                "PodSecurityPolicies",
+                "Backup",
+                "Restore",
+                "Upgrade",
+                "AddonUpgrades",
+                "NodeGroupUpgrades",
+                "PostUpgrade",
+              ]
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClusterResponse"
+components:
+  schemas:
+    ClusterResponse:
+      type: object
+      properties:
+        apiPath:
+          type: string
+          default: /clusters
+          description: The path to the API operation.
+        httpMethod:
+          type: string
+          default: get
+          description: The method of the API operation.
+        httpStatusCode:
+          type: integer
+          default: 200
+          description: The path to the API operation.
+        responseBody:
+          type: object
+          properties:
+            json:
+              type: object
+              properties:
+                accountId:
+                  type: string
+                  description: 12 digit AWS Account ID.
+                region:
+                  type: string
+                  description: AWS Region.
+                clusterName:
+                  type: string
+                  description: EKS Cluster name.
+                reportDate:
+                  type: string
+                  description: Date for which data was fetched from athena tables.
+                details:
+                  type: object
+                  properties:
+                    metadata:
+                      type: object
+                      description: Metadata information about the cluster.
+                    deprecatedApis:
+                      type: object
+                      description: Deprecated API details present in the cluster.
+                    unhealthyPods:
+                      type: object
+                      description: Unhealthy pods present in the cluster.
+                    singletonResources:
+                      type: object
+                      description: Singleton deployments and statefulsets present in the cluster.
+                    csr:
+                      type: object
+                      description: Customer signing requests present in the cluster.
+                    psp:
+                      type: object
+                      description: Pod security policies present in the cluster.
+                    addons:
+                      type: object
+                      description: Addon details attached to the cluster.
+                    backup:
+                      type: object
+                      description: Velero backup object details.
+                    restore:
+                      type: object
+                      description: Velero restore object details.
+                    update:
+                      type: object
+                      description: Update details for control plane, addons and nodegroups.
